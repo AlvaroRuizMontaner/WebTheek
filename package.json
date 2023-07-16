@@ -1,0 +1,37 @@
+{
+  "name": "webtheek",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "react-env --env ENV -- next dev --port 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --pretty --noEmit",
+    "test": "jest",
+    "test-all": "npm run lint && npm run type-check && npm run test"
+  },
+  "dependencies": {
+    "@beam-australia/react-env": "^3.1.1",
+    "@types/node": "20.4.2",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "18.2.7",
+    "react": "18.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.3",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.44.0",
+    "eslint-config-next": "^13.4.9",
+    "eslint-plugin-react": "^7.31.8",
+    "jest": "^29.6.1",
+    "jest-watch-typeahead": "^2.2.2",
+    "next": "^13.4.9",
+    "postcss": "^8.4.26",
+    "sass": "^1.63.6",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.1.6"
+  }
+}

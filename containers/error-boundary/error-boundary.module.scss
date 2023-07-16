@@ -1,0 +1,61 @@
+@import "grid.scss";
+@import "colors.scss";
+@import "fonts.scss";
+
+.container {
+  padding: 40px 0;
+  text-align: center;
+
+  @media screen and (min-width: $small) {
+    padding: 72px 0;
+  }
+
+  .image {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 35px;
+
+    @media screen and (min-width: $small) {
+      width: 258px;
+    }
+  }
+
+  .title {
+    width: fit-content;
+    margin: 0 auto 16px;
+    padding: 3px 10px;
+    background-color: $color-main-primary;
+    text-transform: uppercase;
+    font-family: $font-secondary;
+    font-size: 26px;
+    font-weight: 900;
+
+    @media screen and (min-width: $small) {
+      font-size: 30px;
+    }
+  }
+
+  .subtitle {
+    max-width: 556px;
+    margin: 0 auto 30px;
+    font-size: 18px;
+    font-weight: 800;
+
+    @media screen and (min-width: $small) {
+      font-size: 22px;
+    }
+  }
+
+  .button {
+    width: 100%;
+    margin-inline: auto;
+
+    @media screen and (min-width: $small) {
+      width: 180px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

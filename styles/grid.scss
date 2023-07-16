@@ -1,0 +1,19 @@
+// VARIABLES PARA BREAKPOINT
+$extraLarge: 1920px;
+$large: 1416px;
+$semiLarge: 1320px;
+$medium: 1032px;
+$small: 540px;
+$extraSmall: 320px;
+
+$marginL: 24px;
+$marginS: 16px;
+
+$heightUpperBar: 32px;
+$heightNav: 76px;
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
