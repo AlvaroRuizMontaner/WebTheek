@@ -1,8 +1,10 @@
+import { Nav } from "../nav/nav.container";
+
 function Layout({ children/* , section, subsection  */}: LayoutProps): JSX.Element {
 
     return (
         <>
-            {/* <Nav section={section} subsection={subsection} /> */}
+            <Nav /* section={section} subsection={subsection} */ />
             {children}
             {/* <Footer section={section} subsection={subsection} /> */}
         </>

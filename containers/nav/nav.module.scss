@@ -1,0 +1,30 @@
+@import "colors.scss";
+@import "grid.scss";
+
+
+.container {
+    background-color: $color-secondary;
+    display: flex;
+    padding-inline: 20px;
+    color: $color-ternary;
+
+    .container__logo {
+        @extend .flex-center;
+
+        &.final {
+            margin-left: auto;
+            gap: 0.2rem;
+        }
+
+        .logo {
+            @extend .flex-center;
+        }
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+}

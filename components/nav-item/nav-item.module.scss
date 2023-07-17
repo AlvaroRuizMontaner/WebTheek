@@ -1,0 +1,28 @@
+@import "grid.scss";
+@import "colors.scss";
+
+.container {
+    height: 80px;
+    @extend .flex-center;
+    color: $color-ternary;
+
+    .content {
+        cursor: pointer;
+        &:hover {
+            color: darken($color-ternary, 25%);
+            transform: scale(1.05);
+        }
+
+        .content__link {
+            @extend .flex-center;
+            gap: 0.2rem;
+        }
+
+
+        .image {
+            display: block;
+            height: 100%;
+        }
+        
+    }
+}

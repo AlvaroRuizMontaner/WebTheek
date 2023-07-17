@@ -32,3 +32,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+// -----------------------------------------------------------------------------------
+
+## Para obtener la clave ssh y acceder al droplet
+cat ~/.ssh/id_rsa.pub
+
+## Nombre personalizado de DNS
+
+Desde digitalocean hay que irse a app/actions/manage domains y elegir el nombre del dns
+que se quiere que aparezca añadiendolo al predeterminado. Luego hay que copiar los servidores de nombres y llevarlos a google domains. En google domains hay que irse a DNS/servidores de nombres personalizados y pegar alli los servidores de nombres que nos ha dado digital ocean, por último hay que pinchar en elegir activar esa configuración.

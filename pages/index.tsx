@@ -1,6 +1,10 @@
+import styles from "../styles/pages/home.module.scss"
 function Home (): JSX.Element {
     return(
-        <div>Como va la cosa mariposa</div>
+        <div>
+            <p>Como va la cosa mariposa</p>
+            <p className={styles.font_secondary}>Muy bien jejeje</p>
+        </div>
     )
 }
 
