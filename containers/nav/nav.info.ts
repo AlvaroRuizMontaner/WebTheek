@@ -1,6 +1,6 @@
 export const navInfo = [
     {
-        name: "Perfil",
+        name: "Mi Perfil",
         url: "/profile",
         icon: "/icons/profile.png"
     }, 
@@ -15,7 +15,7 @@ export const navInfo = [
         icon: "/icons/settings.png"
     }, 
     {
-        name: "Section 4",
+        name: "Acerca de",
         url: "/section4",
         icon: "/icons/profile.png"
     }, 
