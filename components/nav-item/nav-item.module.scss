@@ -2,12 +2,20 @@
 @import "colors.scss";
 
 .container {
-    height: 80px;
+    height: $height-nav;
     @extend .flex-center;
     color: $color-ternary;
+    width: 100%;
+
+    &.width {width: 150px;}
 
     .content {
         cursor: pointer;
+        min-width: max-content;
+/*         border-bottom: 2px solid white;
+        margin-inline: 20px;
+        width: 180px; */
+
         &:hover {
             color: darken($color-ternary, 25%);
             transform: scale(1.05);

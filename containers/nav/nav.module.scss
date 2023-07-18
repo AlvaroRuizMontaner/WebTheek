@@ -10,6 +10,10 @@
 
     .container__logo {
         @extend .flex-center;
+        flex: 1 1 130px;
+        max-width: 90px;
+        display: flex;
+        justify-content: center;
 
         &.final {
             margin-left: auto;
@@ -23,8 +27,15 @@
 
     ul {
         display: flex;
+        flex-grow: 1;
         list-style: none;
+        column-gap: 0.5rem;
         margin: 0;
         padding: 0;
+
+        li {
+            flex: 1 1 100px;
+            max-width: 180px;
+        }
     }
 }

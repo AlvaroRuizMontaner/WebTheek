@@ -5,7 +5,7 @@ import styles from "./nav.module.scss"
 export const Nav = () => {
     const MapNavItem = navInfo.map((item, index) => (
         <li key={index}>
-            <NavItem width="150px" {...item} />
+            <NavItem {...item} />
         </li>
     ))
 
