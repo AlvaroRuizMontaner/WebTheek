@@ -7,23 +7,6 @@
     display: flex;
     color: $color-ternary;
 
-    .container__logo {
-        @extend .flex-center;
-        flex: 1 1 80px;
-        max-width: 130px;
-        display: flex;
-        justify-content: center;
-
-        &.final {
-            margin-left: auto;
-            gap: 0.2rem;
-        }
-
-        .logo {
-            @extend .flex-center;
-        }
-    }
-
     ul {
         display: flex;
         flex-grow: 1;

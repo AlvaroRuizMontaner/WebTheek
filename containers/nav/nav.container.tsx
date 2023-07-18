@@ -11,15 +11,11 @@ export const Nav = () => {
 
     return (
         <nav className={styles.container}>
-            <section className={styles.container__logo}>
-                <NavItem name="WebTheek" url="/" />
-            </section>
+            <NavItem name="WebTheek" url="/" />
             <ul className={styles.container__nav_items}>
                 {MapNavItem}
             </ul>
-            <section className={`${styles.container__logo} ${styles.final}`}>
-                <NavItem icon="/icons/login.png" name="Login" url="/login" />
-            </section>
+            <NavItem icon="/icons/login.png" name="Login" url="/login" />
         </nav>
     )
 }
