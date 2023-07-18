@@ -7,6 +7,53 @@
     display: flex;
     color: $color-ternary;
 
+    .content_desktop {
+        display: flex;
+        flex-grow: 1;
+
+        @media screen and (max-width: $average) {
+            display: none;
+        }
+    }
+
+    .content_mobile {
+        display: none;
+        padding-left: 1.5rem;
+        position: relative;
+
+        img {
+            width: 40px;
+            height: auto;
+            cursor: pointer;
+            box-shadow: 0px 0px 1px 0px;
+            background-color: lighten($color-secondary,15%);
+            padding: 2px;
+            border-radius: 4px;
+            transition: border-radius 0.2s ease-in;
+
+            &:hover {
+                border-radius: 50%;
+            }
+        }
+
+        .accordion {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 50vh;
+            width: 220px;
+            transform: translateY(100%);
+        }
+
+        @media screen and (max-width: $average) {
+            flex-grow: 1;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+
+    }
+
     ul {
         display: flex;
         flex-grow: 1;
