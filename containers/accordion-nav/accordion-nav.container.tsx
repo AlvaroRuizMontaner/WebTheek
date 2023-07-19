@@ -1,5 +1,5 @@
 import { Link } from "@/components/link";
-import styles from "./accordion.module.scss"
+import styles from "./accordion-nav.module.scss"
 
 export const Accordion = (props: AccordionProps): JSX.Element => {
     const {open, info} = props;

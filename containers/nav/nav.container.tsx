@@ -1,6 +1,6 @@
 import { NavItem } from "@/components/nav-item/nav-item.component"
 import { useState } from "react"
-import { Accordion } from "../accordion/accordion.container"
+import { Accordion } from "../accordion-nav/accordion-nav.container"
 import { navInfo } from "./nav.info"
 import styles from "./nav.module.scss"
 
