@@ -11,9 +11,11 @@ export const AccordionNav = (props: AccordionNavProps): JSX.Element => {
         </div>
     ))
     return (
-        <Collapse height="40vh" open={open}>
-            {mapInfoTSX}
-        </Collapse>
+        <section className={`${styles.container} ${open ? styles.open : undefined}`}>
+            <Collapse height="40vh" open={open}>
+                {mapInfoTSX}
+            </Collapse>
+        </section>
     )
 }
 
