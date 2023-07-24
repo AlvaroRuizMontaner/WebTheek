@@ -1,0 +1,35 @@
+@import "grid.scss";
+@import "colors.scss";
+
+.container {
+    $gap: 2rem;
+    display: flex;
+    gap: $gap * 1.25;
+    padding: $gap * 0.5 $gap;
+    box-sizing: border-box;
+    width: 100vw;
+    overflow-x: auto;
+
+    scroll-snap-type: x mandatory;
+    scrollbar-width:thin;
+    -webkit-scrollbar-width: none;
+    &::-webkit-scrollbar {
+        width: 1rem; 
+    }
+/*     &::-webkit-scrollbar-thumb {
+        background-color: green; Color del "pulgar" de la barra de desplazamiento
+    } */
+
+    p {
+        flex: 0 0 25vw;
+        height: 150px;
+        scroll-snap-align: none center;
+
+        &:nth-of-type(2n) {
+            background: green;
+        }
+        &:nth-of-type(2n + 1) {
+            background: blue;
+        }
+    }
+}

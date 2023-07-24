@@ -1,17 +1,17 @@
 export const navInfo = [
     {
-        name: "Mi Perfil",
-        url: "/profile",
+        name: "Curriculares",
+        url: "/curriculares",
         icon: "/icons/profile.png"
     }, 
     {
-        name: "Contactos",
-        url: "/contacts",
+        name: "Imagenes",
+        url: "/imagenes",
         icon: "/icons/contacts.png"
     }, 
     {
-        name: "Configuracion",
-        url: "/settings",
+        name: "Herramientas",
+        url: "/herramientas",
         icon: "/icons/settings.png"
     }, 
     {
