@@ -2,42 +2,66 @@
 @import "colors.scss";
 
 .container {
-    $width: 89vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2.5rem;
-    padding-inline: 1rem;
-    box-sizing: border-box;
-    border: 2px solid black;
-    width: $width;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    margin: auto;
-    padding-top: 1rem; // Esto corrige el padding-bottom aparente de la barra de scroll
-
-/*     border-inline: unset;
-    gap: unset;
-    padding-inline: unset; */
-
-    &::-webkit-scrollbar {
-        width: 1rem; 
+    position: relative;
+    
+    .content {
+        $width: 89vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2.5rem;
+        padding-inline: 1rem;
+        box-sizing: border-box;
+        border: 2px solid black;
+        width: $width;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        margin: auto;
+        padding-top: 1rem; // Esto corrige el padding-bottom aparente de la barra de scroll
+    
+    /*     border-inline: unset;
+        gap: unset;
+        padding-inline: unset; */
+    
+        &::-webkit-scrollbar {
+            width: 1rem; 
+        }
+    /*     &::-webkit-scrollbar-thumb {
+            background-color: green; Color del "pulgar" de la barra de desplazamiento
+        } */
+    
+        & > p {
+            flex: 0 0 25vw;
+            height: 150px;
+            scroll-snap-align: none center;
+            /* scroll-margin-right: calc($width - (2.5rem * 2 + 1rem) ); */
+    
+            &:nth-of-type(2n) {
+                background: green;
+            }
+            &:nth-of-type(2n + 1) {
+                background: blue;
+            }
+        }
     }
-/*     &::-webkit-scrollbar-thumb {
-        background-color: green; Color del "pulgar" de la barra de desplazamiento
-    } */
 
-    & > p {
-        flex: 0 0 25vw;
-        height: 150px;
-        scroll-snap-align: none center;
-        scroll-margin-right: calc($width - (2.5rem * 2 + 1rem) );
+    button {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background-image: url("/icons/arrow.png");
+        background-size: 100% auto;
+        background-color: #ccc;
+        border-radius: 50%;
+    }
 
-        &:nth-of-type(2n) {
-            background: green;
-        }
-        &:nth-of-type(2n + 1) {
-            background: blue;
-        }
+    .button_back {
+        left: 2vw;
+        top:50%;
+        transform: rotate(180deg);
+    }
+    .button_forward {
+        right: 2vw;
+        top:50%;
     }
 }

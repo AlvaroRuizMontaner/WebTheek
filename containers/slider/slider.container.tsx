@@ -1,9 +1,28 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./slider.module.scss"
 
 export const Slider = (props: SliderProps): JSX.Element => {
     const {children} = props;
     const el = useRef<HTMLDivElement>(null);
+    const [horizontalScroll, setHorizontalScroll] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+          const container = el.current;
+          console.log((container as any).scrollLeft)
+          setHorizontalScroll((container as any).scrollLeft);
+        };
+    
+        const container = el.current;
+    
+        // Escuchar el evento de desplazamiento (scroll) del contenedor
+        (container as any).addEventListener("scroll", handleScroll);
+    
+        return () => {
+          // Eliminar el evento al desmontar el componente
+          (container as any).removeEventListener("scroll", handleScroll);
+        };
+      }, []);
 
     const moveIt = (ev: React.MouseEvent<HTMLButtonElement>): void => {
         const target = ev.target as HTMLElement;
@@ -27,13 +46,13 @@ export const Slider = (props: SliderProps): JSX.Element => {
     }
 
     return (
-        <>
-            <section ref={el} className={`${styles.container}`}>
+        <section className={styles.container}>
+            <div ref={el} className={`${styles.content}`}>
                 {Array.isArray(children) ? children.map(child => child) : children}
-            </section>
-            <button className={styles.button_back} onClick={moveIt} data-direction="back">back</button>
-            <button className={styles.button_forward} onClick={moveIt} data-direction="forward">forward</button>
-        </>
+            </div>
+            <button className={styles.button_back} onClick={moveIt} data-direction="back"></button>
+            <button className={styles.button_forward} onClick={moveIt} data-direction="forward"></button>
+        </section>
     )
 }
 
