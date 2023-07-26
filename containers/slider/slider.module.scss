@@ -2,17 +2,24 @@
 @import "colors.scss";
 
 .container {
-    $gap: 2rem;
+    $width: 89vw;
     display: flex;
-    gap: $gap * 1.25;
-    padding: $gap * 0.5 $gap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.5rem;
+    padding-inline: 1rem;
     box-sizing: border-box;
-    width: 100vw;
+    border: 2px solid black;
+    width: $width;
     overflow-x: auto;
-
     scroll-snap-type: x mandatory;
-    scrollbar-width:thin;
-    -webkit-scrollbar-width: none;
+    margin: auto;
+    padding-top: 1rem; // Esto corrige el padding-bottom aparente de la barra de scroll
+
+/*     border-inline: unset;
+    gap: unset;
+    padding-inline: unset; */
+
     &::-webkit-scrollbar {
         width: 1rem; 
     }
@@ -20,10 +27,11 @@
         background-color: green; Color del "pulgar" de la barra de desplazamiento
     } */
 
-    p {
+    & > p {
         flex: 0 0 25vw;
         height: 150px;
         scroll-snap-align: none center;
+        scroll-margin-right: calc($width - (2.5rem * 2 + 1rem) );
 
         &:nth-of-type(2n) {
             background: green;

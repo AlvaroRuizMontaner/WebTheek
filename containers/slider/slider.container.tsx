@@ -6,7 +6,7 @@ export const Slider = (props: SliderProps): JSX.Element => {
     const el = useRef<HTMLDivElement>(null);
 
     const moveIt = (ev: React.MouseEvent<HTMLButtonElement>): void => {
-        const target = ev.target as HTMLElement; // Convertir el tipo de ev.target a HTMLElement
+        const target = ev.target as HTMLElement;
        
         if(ev.type === "click") {
             if (!el.current) return;
@@ -31,8 +31,8 @@ export const Slider = (props: SliderProps): JSX.Element => {
             <section ref={el} className={`${styles.container}`}>
                 {Array.isArray(children) ? children.map(child => child) : children}
             </section>
-            <button onClick={moveIt} data-direction="back">back</button>
-            <button onClick={moveIt} data-direction="forward">forward</button>
+            <button className={styles.button_back} onClick={moveIt} data-direction="back">back</button>
+            <button className={styles.button_forward} onClick={moveIt} data-direction="forward">forward</button>
         </>
     )
 }
