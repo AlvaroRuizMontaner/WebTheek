@@ -7,6 +7,7 @@ export const Slider = (props: SliderProps): JSX.Element => {
     const [sliderIndex, setSliderIndex] = useState<number>(0);
     const contentRef = useRef<HTMLDivElement>(null);
     const slideRefs = useRef<(HTMLDivElement)[]>([]);
+    const [slidesVisible, setSlidesVisible] = useState<number>(0);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -36,11 +37,30 @@ export const Slider = (props: SliderProps): JSX.Element => {
     
             setSliderIndex(currentIndex);
         }
+        const handleResize = () => {
+            if (!contentRef.current) return;
+      
+            // Obtener el contenedor del slider y su ancho
+            const container = contentRef.current;
+            const containerWidth = container.clientWidth - 32; // 32 viene de 1rem
+      
+            // Obtener el ancho del primer slide (asumimos que todos los slides tienen el mismo ancho)
+            const firstSlide = slideRefs.current[0];
+            const slideWidth = firstSlide ? firstSlide.offsetWidth : 0;
+      
+            // Calcular cuántos slides caben en una vista
+            const visibleSlides = Math.floor(containerWidth / slideWidth);
+            console.log(visibleSlides)
+            setSlidesVisible(visibleSlides);
+          };
     
         const content = contentRef.current;
+        if (!content) return
+
+        handleResize();
     
-        // Escuchar el evento de desplazamiento (scroll) del contenedor
-        (content as any).addEventListener("scroll", handleScroll);
+        content.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", handleResize);
     
         return () => {
           // Eliminar el evento al desmontar el componente
