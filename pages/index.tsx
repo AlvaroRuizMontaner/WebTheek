@@ -15,9 +15,9 @@ function Home (): JSX.Element {
                 <p>D</p>
                 <p>E</p>
                 <p>F</p>
-                <p>G</p>
+{/*                 <p>G</p>
                 <p>H</p>
-                <p>I</p>
+                <p>I</p> */}
             </Slider>
         </div>
     )

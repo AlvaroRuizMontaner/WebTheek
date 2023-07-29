@@ -1,37 +1,61 @@
+import { Dots } from "@/components/sensors/dots/dots.component";
 import { useEffect, useRef, useState } from "react";
 import styles from "./slider.module.scss"
 
 export const Slider = (props: SliderProps): JSX.Element => {
     const {children} = props;
-    const el = useRef<HTMLDivElement>(null);
-    const [horizontalScroll, setHorizontalScroll] = useState(0);
+    const [sliderIndex, setSliderIndex] = useState<number>(0);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const slideRefs = useRef<(HTMLDivElement)[]>([]);
 
     useEffect(() => {
         const handleScroll = () => {
-          const container = el.current;
-          console.log((container as any).scrollLeft)
-          setHorizontalScroll((container as any).scrollLeft);
-        };
+            if (!contentRef.current) return;
+
+            // Obtener el contenedor del slider y su ancho
+            const content = contentRef.current;
+            const containerWidth = content.clientWidth;
+
+            // Obtener la posición del scroll en el contenedor del slider
+            const contentScrollPos = content.scrollLeft;
+      
+            // Comparar la posición del scroll con las posiciones de los slides
+            let currentIndex = 0;
+            slideRefs.current.forEach((slideRef, index) => {
+                if (slideRef) {
+                  const slideLeftPos = slideRef.offsetLeft;
+                  const gap = 2.5 * parseFloat(getComputedStyle(content).fontSize); // Convertir el gap de rem a px
+        
+                  index === 0 && console.log(slideLeftPos, contentScrollPos + gap, index)
+                  if ((slideLeftPos <= (contentScrollPos + gap))) {
+                    console.log("lol")
+                    currentIndex = index;
+                  }
+                }
+              });
     
-        const container = el.current;
+            setSliderIndex(currentIndex);
+        }
+    
+        const content = contentRef.current;
     
         // Escuchar el evento de desplazamiento (scroll) del contenedor
-        (container as any).addEventListener("scroll", handleScroll);
+        (content as any).addEventListener("scroll", handleScroll);
     
         return () => {
           // Eliminar el evento al desmontar el componente
-          (container as any).removeEventListener("scroll", handleScroll);
+          (content as any).removeEventListener("scroll", handleScroll);
         };
       }, []);
 
-    const moveIt = (ev: React.MouseEvent<HTMLButtonElement>): void => {
+    const moveWithArrow = (ev: React.MouseEvent<HTMLButtonElement>): void => {
         const target = ev.target as HTMLElement;
        
         if(ev.type === "click") {
-            if (!el.current) return;
+            if (!contentRef.current) return;
         }
 
-        let xScrollBy = (el as any).current.clientWidth / 3;
+        let xScrollBy = (contentRef as any).current.clientWidth / 3;
 
         if(target.dataset.direction === "back") {
             xScrollBy = xScrollBy * -1;
@@ -42,16 +66,22 @@ export const Slider = (props: SliderProps): JSX.Element => {
             behavior: "smooth"
         };
 
-        (el as any).current.scrollBy(scrollByOptions)
+        (contentRef as any).current.scrollBy(scrollByOptions)
     }
 
     return (
         <section className={styles.container}>
-            <div ref={el} className={`${styles.content}`}>
-                {Array.isArray(children) ? children.map(child => child) : children}
+            <div ref={contentRef} className={`${styles.content}`}>
+                {/* {Array.isArray(children) ? children.map(child => child) : children} */}
+                {Array.isArray(children) ? 
+                (children.map((child, index) => <div ref={(ref) => (slideRefs.current[index] = ref!)} className={styles.content_child}>{child}</div>)) : 
+                (<div className={styles.content_child}>{children}</div>)}
             </div>
-            <button className={styles.button_back} onClick={moveIt} data-direction="back"></button>
-            <button className={styles.button_forward} onClick={moveIt} data-direction="forward"></button>
+            <div className={styles.dots}>
+                <Dots length={Array.isArray(children) ? children.length-2 : 1} currentIndex={sliderIndex}/>
+            </div>
+            <button className={styles.button_back} onClick={moveWithArrow} data-direction="back"></button>
+            <button className={styles.button_forward} onClick={moveWithArrow} data-direction="forward"></button>
         </section>
     )
 }

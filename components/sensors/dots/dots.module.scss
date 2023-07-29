@@ -1,0 +1,27 @@
+@import "grid.scss";
+
+.dots {
+    $dot-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+    gap: 10px;
+  
+    @media screen and (min-width: $small) {
+      gap: 25px;
+    }
+  
+    .dot {
+      display: inline-block;
+      width: $dot-size;
+      height: $dot-size;
+      border-radius: 999px;
+      background-color: #e0e0e0;
+      transition: 0.3s;
+  
+      &.active {
+        background-color: #9c9fa1;
+      }
+    }
+  }
