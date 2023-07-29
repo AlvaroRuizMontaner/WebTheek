@@ -25,10 +25,10 @@ export const Slider = (props: SliderProps): JSX.Element => {
             slideRefs.current.forEach((slideRef, index) => {
                 if (slideRef) {
                   const slideLeftPos = slideRef.offsetLeft;
-                  const gap = 2.5 * parseFloat(getComputedStyle(content).fontSize); // Convertir el gap de rem a px
+                  //const gap = 2.5 * parseFloat(getComputedStyle(content).fontSize); // Convertir el gap de rem a px
         
-                  index === 0 && console.log(slideLeftPos, contentScrollPos + gap, index)
-                  if ((slideLeftPos <= (contentScrollPos + gap))) {
+                  index === 0 && console.log(slideLeftPos, contentScrollPos /* + gap */, index)
+                  if ((slideLeftPos <= (contentScrollPos /* + gap */))) {
                     console.log("lol")
                     currentIndex = index;
                   }
@@ -37,12 +37,13 @@ export const Slider = (props: SliderProps): JSX.Element => {
     
             setSliderIndex(currentIndex);
         }
+        handleScroll()
         const handleResize = () => {
             if (!contentRef.current) return;
       
             // Obtener el contenedor del slider y su ancho
             const container = contentRef.current;
-            const containerWidth = container.clientWidth - 32; // 32 viene de 1rem
+            const containerWidth = container.clientWidth
       
             // Obtener el ancho del primer slide (asumimos que todos los slides tienen el mismo ancho)
             const firstSlide = slideRefs.current[0];
