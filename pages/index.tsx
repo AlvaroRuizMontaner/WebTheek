@@ -1,6 +1,13 @@
 import { Slider } from "@/containers/slider/slider.container"
 import styles from "../styles/pages/home.module.scss"
 function Home (): JSX.Element {
+    const settings = {
+        slideWidth: 15,
+        contentWidth: 85,
+        slidesVisible: 3
+    }
+    const gapWidth =(settings.contentWidth - (settings.slidesVisible * settings.slideWidth))/(settings.slidesVisible + 1);
+
     return(
         <div>
             <p>Lo que ira en la home si que no lo tengo claro aun</p>
@@ -8,16 +15,13 @@ function Home (): JSX.Element {
             <br />
             <br />
             <br />
-            <Slider>
+            <Slider gapWidth={gapWidth} {...settings}>
                 <p>A</p>
                 <p>B</p>
                 <p>C</p>
                 <p>D</p>
                 <p>E</p>
                 <p>F</p>
-{/*                 <p>G</p>
-                <p>H</p>
-                <p>I</p> */}
             </Slider>
         </div>
     )

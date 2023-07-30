@@ -1,35 +1,38 @@
 import { Dots } from "@/components/sensors/dots/dots.component";
-import { useEffect, useRef, useState } from "react";
+import { CSSProperties, useEffect, useRef, useState } from "react";
 import styles from "./slider.module.scss"
 
 export const Slider = (props: SliderProps): JSX.Element => {
-    const {children} = props;
+    const {children, slidesVisible, contentWidth, slideWidth, gapWidth} = props;
     const [sliderIndex, setSliderIndex] = useState<number>(0);
     const contentRef = useRef<HTMLDivElement>(null);
     const slideRefs = useRef<(HTMLDivElement)[]>([]);
-    const [slidesVisible, setSlidesVisible] = useState<number>(0);
+    /* const [gapWidth, setGapWidth] = useState(0); */
+    //const [contentWidth, setContentWidth] = useState<number>(0);
+    //const [slideWidth, setSlidesWidth] = useState<number>(0);
 
     useEffect(() => {
         const handleScroll = () => {
             if (!contentRef.current) return;
+            const docWidth = document.documentElement.clientWidth
 
-            // Obtener el contenedor del slider y su ancho
-            const content = contentRef.current;
-            const containerWidth = content.clientWidth;
+            const snapProportion = 1 - (slideWidth/contentWidth)
+            const snapValue = slideWidth * snapProportion
+            console.log(snapValue, "snapValue")
 
-            // Obtener la posición del scroll en el contenedor del slider
-            const contentScrollPos = content.scrollLeft;
-      
-            // Comparar la posición del scroll con las posiciones de los slides
+            // Valor de scroll en content
+            const contentScrollPos = contentRef.current.scrollLeft;
+            console.log("contentScrollPos:", contentScrollPos)
+
+            // Comparar valor de scroll con las posiciones de los slides
             let currentIndex = 0;
             slideRefs.current.forEach((slideRef, index) => {
                 if (slideRef) {
                   const slideLeftPos = slideRef.offsetLeft;
-                  //const gap = 2.5 * parseFloat(getComputedStyle(content).fontSize); // Convertir el gap de rem a px
+                  const gap =  gapWidth * docWidth/100;
         
-                  index === 0 && console.log(slideLeftPos, contentScrollPos /* + gap */, index)
-                  if ((slideLeftPos <= (contentScrollPos /* + gap */))) {
-                    console.log("lol")
+                  index === 1 && console.log(slideLeftPos, contentScrollPos + gap, index, "gap", gap)
+                  if ((slideLeftPos <= (contentScrollPos + gap))) {
                     currentIndex = index;
                   }
                 }
@@ -37,22 +40,25 @@ export const Slider = (props: SliderProps): JSX.Element => {
     
             setSliderIndex(currentIndex);
         }
-        handleScroll()
+        
         const handleResize = () => {
             if (!contentRef.current) return;
       
             // Obtener el contenedor del slider y su ancho
-            const container = contentRef.current;
-            const containerWidth = container.clientWidth
+            //const content = contentRef.current;
+            //const contentWidth = content.clientWidth
       
             // Obtener el ancho del primer slide (asumimos que todos los slides tienen el mismo ancho)
-            const firstSlide = slideRefs.current[0];
-            const slideWidth = firstSlide ? firstSlide.offsetWidth : 0;
+            //const firstSlide = slideRefs.current[0];
+            //const slideWidth = firstSlide ? firstSlide.offsetWidth : 0;
       
             // Calcular cuántos slides caben en una vista
-            const visibleSlides = Math.floor(containerWidth / slideWidth);
-            console.log(visibleSlides)
-            setSlidesVisible(visibleSlides);
+            //const visibleSlides = Math.floor(contentWidth / slideWidth);
+            //setContentWidth(contentWidth);
+            //setSlidesWidth(slideWidth);
+
+/*             const gapWidth = (contentWidth - (slidesVisible * slideWidth))/(slidesVisible + 1);
+            setGapWidth(gapWidth) */
           };
     
         const content = contentRef.current;
@@ -67,7 +73,7 @@ export const Slider = (props: SliderProps): JSX.Element => {
           // Eliminar el evento al desmontar el componente
           (content as any).removeEventListener("scroll", handleScroll);
         };
-      }, []);
+      }, [gapWidth]);
 
     const moveWithArrow = (ev: React.MouseEvent<HTMLButtonElement>): void => {
         const target = ev.target as HTMLElement;
@@ -90,12 +96,18 @@ export const Slider = (props: SliderProps): JSX.Element => {
         (contentRef as any).current.scrollBy(scrollByOptions)
     }
 
+    const contentStyle = {
+        "--gapWidth": `${gapWidth}vw`,
+        "--contentWidth": `${contentWidth}vw`,
+        "--slideWidth": `${slideWidth}vw`,
+    } as CSSProperties
+
     return (
         <section className={styles.container}>
-            <div ref={contentRef} className={`${styles.content}`}>
+            <div style={contentStyle} ref={contentRef} className={`${styles.content}`}>
                 {/* {Array.isArray(children) ? children.map(child => child) : children} */}
                 {Array.isArray(children) ? 
-                (children.map((child, index) => <div ref={(ref) => (slideRefs.current[index] = ref!)} className={styles.content_child}>{child}</div>)) : 
+                (children.map((child, index) => <div key={index} ref={(ref) => (slideRefs.current[index] = ref!)} className={styles.content_child}>{child}</div>)) : 
                 (<div className={styles.content_child}>{children}</div>)}
             </div>
             <div className={styles.dots}>
@@ -109,4 +121,8 @@ export const Slider = (props: SliderProps): JSX.Element => {
 
 interface SliderProps {
     children: JSX.Element | JSX.Element[];
+    slidesVisible: number;
+    contentWidth: number;
+    slideWidth: number;
+    gapWidth: number;
 }
