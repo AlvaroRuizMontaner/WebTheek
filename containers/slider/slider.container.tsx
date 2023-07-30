@@ -12,9 +12,10 @@ export const Slider = (props: SliderProps): JSX.Element => {
     //const [slideWidth, setSlidesWidth] = useState<number>(0);
 
     useEffect(() => {
+        const docWidth = document.documentElement.clientWidth
+
         const handleScroll = () => {
             if (!contentRef.current) return;
-            const docWidth = document.documentElement.clientWidth
 
             const snapProportion = 1 - (slideWidth/contentWidth)
             const snapValue = slideWidth * snapProportion
@@ -29,7 +30,17 @@ export const Slider = (props: SliderProps): JSX.Element => {
             slideRefs.current.forEach((slideRef, index) => {
                 if (slideRef) {
                   const slideLeftPos = slideRef.offsetLeft;
-                  const gap = (index > 0 ) ? (index !== slideRefs.current.length-1 - 2 ? gapWidth * docWidth/100 : 2 * gapWidth * docWidth/100) : 0;
+                  let gap: number;
+                  if(index > 0) {
+                    if(index !== slideRefs.current.length-1 - 2) {
+                        gap = gapWidth * docWidth/100 // Si es una vista intermedia el gap es tamaño normal
+                    } else {
+                        gap = 2 * gapWidth * docWidth/100 // Si es la ultima vista el gap a considerar es el doble
+                    }
+                  } else {
+                    gap = 0 // En la primera vista el gap del calculo debe ser 0
+                  }
+                  //const gap = (index > 0 ) ? (index !== slideRefs.current.length-1 - 2 ? gapWidth * docWidth/100 : 2 * gapWidth * docWidth/100) : 0;
         
                   index === 3 && console.log(slideLeftPos,  Math.ceil(contentScrollPos + gap), index, "gap", gap)
                   if ((slideLeftPos <= (Math.ceil(contentScrollPos + gap)))) {
@@ -77,12 +88,13 @@ export const Slider = (props: SliderProps): JSX.Element => {
 
     const moveWithArrow = (ev: React.MouseEvent<HTMLButtonElement>): void => {
         const target = ev.target as HTMLElement;
+        const docWidth = document.documentElement.clientWidth
        
         if(ev.type === "click") {
             if (!contentRef.current) return;
         }
 
-        let xScrollBy = (contentRef as any).current.clientWidth / 3;
+        let xScrollBy = gapWidth * docWidth/100 //(contentRef as any).current.clientWidth / 3;
 
         if(target.dataset.direction === "back") {
             xScrollBy = xScrollBy * -1;

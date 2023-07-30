@@ -2,8 +2,8 @@ import { Slider } from "@/containers/slider/slider.container"
 import styles from "../styles/pages/home.module.scss"
 function Home (): JSX.Element {
     const settings = {
-        slideWidth: 15,
-        contentWidth: 85,
+        slideWidth: 20,
+        contentWidth: 90,
         slidesVisible: 3
     }
     const gapWidth =(settings.contentWidth - (settings.slidesVisible * settings.slideWidth))/(settings.slidesVisible + 1);
