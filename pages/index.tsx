@@ -22,6 +22,12 @@ function Home (): JSX.Element {
                 <p>D</p>
                 <p>E</p>
                 <p>F</p>
+                <p>D</p>
+                <p>E</p>
+                <p>F</p>
+                <p>D</p>
+                <p>E</p>
+                <p>F</p>
             </Slider>
         </div>
     )

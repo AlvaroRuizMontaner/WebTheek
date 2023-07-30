@@ -29,10 +29,10 @@ export const Slider = (props: SliderProps): JSX.Element => {
             slideRefs.current.forEach((slideRef, index) => {
                 if (slideRef) {
                   const slideLeftPos = slideRef.offsetLeft;
-                  const gap =  gapWidth * docWidth/100;
+                  const gap = (index > 0 ) ? (index !== slideRefs.current.length-1 - 2 ? gapWidth * docWidth/100 : 2 * gapWidth * docWidth/100) : 0;
         
-                  index === 1 && console.log(slideLeftPos, contentScrollPos + gap, index, "gap", gap)
-                  if ((slideLeftPos <= (contentScrollPos + gap))) {
+                  index === 3 && console.log(slideLeftPos,  Math.ceil(contentScrollPos + gap), index, "gap", gap)
+                  if ((slideLeftPos <= (Math.ceil(contentScrollPos + gap)))) {
                     currentIndex = index;
                   }
                 }
