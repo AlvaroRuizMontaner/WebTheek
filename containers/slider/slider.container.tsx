@@ -42,7 +42,7 @@ export const Slider = (props: SliderProps): JSX.Element => {
                   }
                   //const gap = (index > 0 ) ? (index !== slideRefs.current.length-1 - 2 ? gapWidth * docWidth/100 : 2 * gapWidth * docWidth/100) : 0;
         
-                  index === 3 && console.log(slideLeftPos,  Math.ceil(contentScrollPos + gap), index, "gap", gap)
+                  index === 2 && console.log(slideLeftPos,  Math.ceil(contentScrollPos + gap), index, "gap", gap)
                   if ((slideLeftPos <= (Math.ceil(contentScrollPos + gap)))) {
                     currentIndex = index;
                   }
@@ -89,12 +89,13 @@ export const Slider = (props: SliderProps): JSX.Element => {
     const moveWithArrow = (ev: React.MouseEvent<HTMLButtonElement>): void => {
         const target = ev.target as HTMLElement;
         const docWidth = document.documentElement.clientWidth
+        console.log("push")
        
         if(ev.type === "click") {
             if (!contentRef.current) return;
         }
 
-        let xScrollBy = slideWidth + gapWidth * docWidth/100 //(contentRef as any).current.clientWidth / 3;
+        let xScrollBy = (slideWidth + gapWidth) * docWidth/100 //(contentRef as any).current.clientWidth / 3;
 
         if(target.dataset.direction === "back") {
             xScrollBy = xScrollBy * -1;
