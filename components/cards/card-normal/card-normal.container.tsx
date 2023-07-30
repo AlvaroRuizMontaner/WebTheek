@@ -1,6 +1,6 @@
 import styles from "./card-normal.module.scss";
 
-export const CardNormal = (props: CardNormalProps) => {
+export const CardNormal = (props: CardNormalProps): JSX.Element => {
     const {isZoomable} = props;
 
     return (

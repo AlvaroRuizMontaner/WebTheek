@@ -12,9 +12,8 @@ export const Slider = (props: SliderProps): JSX.Element => {
     //const [slideWidth, setSlidesWidth] = useState<number>(0);
 
     useEffect(() => {
-        const docWidth = document.documentElement.clientWidth
-
         const handleScroll = () => {
+            const docWidth = document.documentElement.clientWidth
             if (!contentRef.current) return;
 
             const snapProportion = 1 - (slideWidth/contentWidth)
@@ -42,8 +41,8 @@ export const Slider = (props: SliderProps): JSX.Element => {
                   }
                   //const gap = (index > 0 ) ? (index !== slideRefs.current.length-1 - 2 ? gapWidth * docWidth/100 : 2 * gapWidth * docWidth/100) : 0;
         
-                  index === 2 && console.log(slideLeftPos,  Math.ceil(contentScrollPos + gap), index, "gap", gap)
-                  if ((slideLeftPos <= (Math.ceil(contentScrollPos + gap)))) {
+                  index === 1 && console.log(slideLeftPos,  Math.ceil(contentScrollPos + gap), index, "gap", gap)
+                  if ((slideLeftPos <= (Math.ceil(contentScrollPos + gap + slideWidth)))) {
                     currentIndex = index;
                   }
                 }
