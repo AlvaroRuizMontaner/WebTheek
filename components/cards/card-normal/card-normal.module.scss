@@ -1,0 +1,14 @@
+@import "grid.scss";
+.container {
+    
+    &.zoom {
+        position: relative;
+        overflow: hidden;
+
+        .content {
+            position: absolute;
+            transform: scale(1.07);
+            transition: 0.3s;
+        }
+    }
+}

@@ -2,7 +2,7 @@ import { Slider } from "@/containers/slider/slider.container"
 import styles from "../styles/pages/home.module.scss"
 function Home (): JSX.Element {
     const settings = {
-        slideWidth: 20,
+        slideWidth: 25,
         contentWidth: 90,
         slidesVisible: 3
     }

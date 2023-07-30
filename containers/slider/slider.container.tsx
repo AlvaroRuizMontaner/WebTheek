@@ -3,7 +3,7 @@ import { CSSProperties, useEffect, useRef, useState } from "react";
 import styles from "./slider.module.scss"
 
 export const Slider = (props: SliderProps): JSX.Element => {
-    const {children, slidesVisible, contentWidth, slideWidth, gapWidth} = props;
+    const {children, contentWidth, slideWidth, gapWidth} = props;
     const [sliderIndex, setSliderIndex] = useState<number>(0);
     const contentRef = useRef<HTMLDivElement>(null);
     const slideRefs = useRef<(HTMLDivElement)[]>([]);
@@ -94,7 +94,7 @@ export const Slider = (props: SliderProps): JSX.Element => {
             if (!contentRef.current) return;
         }
 
-        let xScrollBy = gapWidth * docWidth/100 //(contentRef as any).current.clientWidth / 3;
+        let xScrollBy = slideWidth + gapWidth * docWidth/100 //(contentRef as any).current.clientWidth / 3;
 
         if(target.dataset.direction === "back") {
             xScrollBy = xScrollBy * -1;
@@ -133,7 +133,6 @@ export const Slider = (props: SliderProps): JSX.Element => {
 
 interface SliderProps {
     children: JSX.Element | JSX.Element[];
-    slidesVisible: number;
     contentWidth: number;
     slideWidth: number;
     gapWidth: number;
