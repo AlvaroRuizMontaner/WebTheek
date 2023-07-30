@@ -6,6 +6,8 @@
     background-color: $color-secondary;
     display: flex;
     color: $color-ternary;
+    position: relative;
+    z-index: 999;
 
     .content {
         color: red;
