@@ -41,8 +41,9 @@ export const Slider = (props: SliderProps): JSX.Element => {
                   }
                   //const gap = (index > 0 ) ? (index !== slideRefs.current.length-1 - 2 ? gapWidth * docWidth/100 : 2 * gapWidth * docWidth/100) : 0;
         
-                  index === 1 && console.log(slideLeftPos,  Math.ceil(contentScrollPos + gap), index, "gap", gap)
-                  if ((slideLeftPos <= (Math.ceil(contentScrollPos + gap + slideWidth)))) {
+                  index === 3 && console.log(slideLeftPos,  Math.ceil(contentScrollPos + gap), index, "gap", gap)
+                  index === 3 && console.log("contentScrollPos:", contentScrollPos)
+                  if ((slideLeftPos <= (Math.ceil(contentScrollPos + gap /* + slideWidth/2 */)))) {
                     currentIndex = index;
                   }
                 }

@@ -1,13 +1,15 @@
+import { CardNormal } from "@/components/cards/card-normal/card-normal.container";
+import { info } from "@/components/cards/card-normal/card-normal.info";
 import { Slider } from "@/containers/slider/slider.container"
 import styles from "../styles/pages/home.module.scss"
 function Home (): JSX.Element {
     const settings = {
-        slideWidth: 25,
-        contentWidth: 90,
+        slideWidth: 28,
+        contentWidth: 95,
         slidesVisible: 3
     }
     const gapWidth =(settings.contentWidth - (settings.slidesVisible * settings.slideWidth))/(settings.slidesVisible + 1);
-
+    console.log(gapWidth)
     return(
         <div>
             <p>Lo que ira en la home si que no lo tengo claro aun</p>
@@ -16,7 +18,10 @@ function Home (): JSX.Element {
             <br />
             <br />
             <Slider gapWidth={gapWidth} {...settings}>
-                <p>A</p>
+                {info.map((item, index) => (
+                    <CardNormal key={index} description={item.description} src={item.src}/>
+                ))}
+{/*                 <p>A</p>
                 <p>B</p>
                 <p>C</p>
                 <p>D</p>
@@ -27,7 +32,7 @@ function Home (): JSX.Element {
                 <p>F</p>
                 <p>D</p>
                 <p>E</p>
-                <p>F</p>
+                <p>F</p> */}
             </Slider>
         </div>
     )

@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps):JSX.Element {
     <>
         <Head>
         <title></title>
-        <link rel="icon" href="/icons/favicon-masmovil-alarmas.svg" />
+        <link rel="icon" href="/icons/butterfly.png" />
         <script src="/__ENV.js" />
         </Head>
         <header>
