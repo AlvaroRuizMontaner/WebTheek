@@ -1,27 +1,33 @@
 import { CardNormal } from "@/components/cards/card-normal/card-normal.container";
 import { info } from "@/components/cards/card-normal/card-normal.info";
-import { Slider } from "@/containers/slider/slider.container"
-import styles from "../styles/pages/home.module.scss"
-function Home (): JSX.Element {
-    const settings = {
-        slideWidth: 28,
-        contentWidth: 95,
-        slidesVisible: 3
-    }
-    const gapWidth =(settings.contentWidth - (settings.slidesVisible * settings.slideWidth))/(settings.slidesVisible + 1);
-    console.log(gapWidth)
-    return(
-        <div>
-            <p>Lo que ira en la home si que no lo tengo claro aun</p>
-            <p className={styles.font_secondary}>Ya veremos</p>
-            <br />
-            <br />
-            <br />
-            <Slider gapWidth={gapWidth} {...settings}>
-                {info.map((item, index) => (
-                    <CardNormal key={index} description={item.description} src={item.src}/>
-                ))}
-{/*                 <p>A</p>
+import { Slider } from "@/containers/slider/slider.container";
+import styles from "../styles/pages/home.module.scss";
+function Home(): JSX.Element {
+  const settings = {
+    slideWidth: 28,
+    contentWidth: 95,
+    slidesVisible: 3,
+  };
+  const gapWidth =
+    (settings.contentWidth - settings.slidesVisible * settings.slideWidth) /
+    (settings.slidesVisible + 1);
+  console.log(gapWidth);
+  return (
+    <div>
+      <p>Lo que ira en la home si que no lo tengo claro aun</p>
+      <p className={styles.font_secondary}>Ya veremos</p>
+      <br />
+      <br />
+      <br />
+      <Slider gapWidth={gapWidth} {...settings}>
+        {info.map((item, index) => (
+          <CardNormal
+            key={index}
+            description={item.description}
+            src={item.src}
+          />
+        ))}
+        {/*                 <p>A</p>
                 <p>B</p>
                 <p>C</p>
                 <p>D</p>
@@ -33,9 +39,9 @@ function Home (): JSX.Element {
                 <p>D</p>
                 <p>E</p>
                 <p>F</p> */}
-            </Slider>
-        </div>
-    )
+      </Slider>
+    </div>
+  );
 }
 
 /* 
@@ -55,4 +61,4 @@ Generador de nombres de empresas o dominios: Ayudar a los usuarios a encontrar n
 Las secciones que mencionas, de recursos curriculares y recursos de edición de imágenes, suenan muy útiles y pueden ser una buena base para comenzar.
 */
 
-export default Home
+export default Home;

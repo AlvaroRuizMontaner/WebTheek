@@ -5,15 +5,14 @@ export const Picture = ({
   src,
   href,
   ratio,
-  objectFit="cover",
-  objectPosition
+  objectFit = "cover",
+  objectPosition,
 }: PictureProps): JSX.Element => {
-
-  const paddingBottom = ratio ? `${(1 / ratio) * 100}%` : undefined
+  const paddingBottom = ratio ? `${(1 / ratio) * 100}%` : undefined;
 
   const regex = /\/([^/]+)\.(?:png|jpe?g|gif|svg|webp)$/i;
   const parts = src.split(regex);
-  const altMsg = parts[parts.length-2]
+  const altMsg = parts[parts.length - 2];
 
   const style = {
     backgroundImage: href,
@@ -21,19 +20,19 @@ export const Picture = ({
     backgroundPosition: objectPosition,
     paddingBottom: paddingBottom,
     width: "100%",
-  }
+  };
 
   const ImageSettings = {
     src: src,
     layout: "fill",
     objectFit: objectFit,
     objectPosition: objectPosition,
-    alt: altMsg
-  }
+    alt: altMsg,
+  };
 
   return (
     <div style={style} className={styles.container}>
-      {href ? <div style={style}/> : <Image {...ImageSettings}/>}
+      {href ? <div style={style} /> : <Image {...ImageSettings} />}
     </div>
   );
 };

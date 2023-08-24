@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 // import { TranslationProvider } from "my-i18n-lib"
 // import defaultStrings from "i18n/en-x-default"
 
-const Providers = ({ children }: {children: JSX.Element}) => {
+const Providers = ({ children }: { children: JSX.Element }) => {
   return children;
   // return (
   //   <ThemeProvider theme="light">
