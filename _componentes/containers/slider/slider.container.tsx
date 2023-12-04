@@ -1,4 +1,4 @@
-import { Dots } from "@/components/sensors/dots/dots.component";
+import { Dots } from "@/_componentes/components/sensors/dots/dots.component";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import styles from "./slider.module.scss";
 

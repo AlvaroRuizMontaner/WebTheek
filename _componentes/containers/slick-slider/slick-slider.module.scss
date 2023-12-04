@@ -1,0 +1,28 @@
+@import "grid.scss";
+@import "colors.scss";
+
+.container {
+    [class*=slick-slider] {
+        padding: 5rem;
+        padding-block: 10rem;
+        box-sizing: border-box;
+    
+    }
+    [class*=slick-dots] {
+        li button::before {
+            font-size: 20px !important;
+        }
+    
+    }
+    [class*=slick-next] {
+        background-color: black;
+        right: 25px;
+    
+    }
+    [class*=slick-prev] {
+        background-color: black;
+        left: 25px;
+        z-index: 1;
+    
+    }
+}

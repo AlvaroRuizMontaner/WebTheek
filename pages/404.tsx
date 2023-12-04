@@ -1,5 +1,5 @@
-import { ErrorComponent } from "@/containers";
-import { error404Info } from "@/containers/error-boundary/error-boundary.info";
+import { ErrorComponent } from "@/_componentes/containers";
+import { error404Info } from "@/_componentes/containers/error-boundary/error-boundary.info";
 
 const Page404 = (): JSX.Element => {
   return (

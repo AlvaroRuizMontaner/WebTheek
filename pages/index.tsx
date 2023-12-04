@@ -1,6 +1,6 @@
-import { CardNormal } from "@/components/cards/card-normal/card-normal.container";
-import { info } from "@/components/cards/card-normal/card-normal.info";
-import { Slider } from "@/containers/slider/slider.container";
+import { CardNormal } from "@/_componentes/components/cards/card-normal/card-normal.container";
+import { info } from "@/_componentes/components/cards/card-normal/card-normal.info";
+import { Slider } from "@/_componentes/containers/slider/slider.container";
 import styles from "../styles/pages/home.module.scss";
 function Home(): JSX.Element {
   const settings = {

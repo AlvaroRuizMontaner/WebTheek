@@ -1,4 +1,4 @@
-import { NavItem } from "@/components/nav-item/nav-item.component";
+import { NavItem } from "@/_componentes/components/nav-item/nav-item.component";
 import { useState } from "react";
 import { AccordionNav } from "../accordion-nav/accordion-nav.container";
 import { navInfo } from "./nav.info";

@@ -1,4 +1,4 @@
-import { Picture } from "@/components/picture/picture.container";
+import { Picture } from "@/_componentes/components/picture/picture.container";
 import styles from "./card-normal.module.scss";
 
 export const CardNormal = (props: CardNormalProps): JSX.Element => {

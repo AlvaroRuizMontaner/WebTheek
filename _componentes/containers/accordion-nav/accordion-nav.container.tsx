@@ -1,4 +1,4 @@
-import { Link } from "@/components/link";
+import { Link } from "@/_componentes/components/link";
 import { Collapse } from "../collapse/collapse.container";
 import styles from "./accordion-nav.module.scss";
 

@@ -2,6 +2,7 @@
 @import "colors.scss";
 
 .container {
+    $height-nav: 80px;
     height: $height-nav;
     @extend .flex-center;
     color: $color-ternary;
