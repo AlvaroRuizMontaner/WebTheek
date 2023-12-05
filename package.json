@@ -14,24 +14,37 @@
     "test": "jest",
     "test-all": "npm run lint && npm run types:check && npm run test"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "dependencies": {
     "@beam-australia/react-env": "^3.1.1",
     "@types/node": "20.4.2",
     "@types/react": "^18.2.0",
     "@types/react-dom": "18.2.7",
     "@types/react-slick": "^0.23.10",
+    "axios": "^1.6.2",
+    "js-cookie": "^3.0.5",
+    "nprogress": "^0.2.0",
     "react": "18.2.0",
     "react-slick": "^0.29.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.0",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.5.3",
+    "@types/next": "^9.0.0",
+    "@types/nprogress": "^0.2.3",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.44.0",
     "eslint-config-next": "^13.4.9",
     "eslint-plugin-react": "^7.31.8",
+    "gulp": "^4.0.2",
     "husky": "^8.0.3",
     "jest": "^29.6.1",
     "jest-watch-typeahead": "^2.2.2",

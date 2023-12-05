@@ -14,6 +14,10 @@ export default function Document(): JSX.Element {
           href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
           rel="stylesheet"
         ></link>
+
+        <link rel="stylesheet" type="text/css" href="/listMessages.css" />
+        <link rel="stylesheet" type="text/css" href="/styles.css" />
+        <link rel="stylesheet" type="text/css" href="/nprogress.css" />
       </Head>
       <body>
         <Main />
